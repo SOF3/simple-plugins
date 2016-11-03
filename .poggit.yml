@@ -1,0 +1,5 @@
+branches: master
+projects:
+  EvalPlugin:
+    path: EvalPlugin
+    model: default

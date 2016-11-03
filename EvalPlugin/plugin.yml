@@ -3,12 +3,10 @@ version: 1.0.0
 api: [1.0.0, 2.0.0]
 main: EvalPlugin\EvalPlugin
 author: SOFe
-
 commands:
   eval:
     permission: eval
-
 permissions:
   eval:
     description: Use /eval
-    default: op
+    default: "false"

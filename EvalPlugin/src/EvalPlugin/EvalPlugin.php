@@ -11,5 +11,6 @@ class EvalPlugin extends PB{
         $code = implode(" ", $args);
         $this->getLogger()->alert("Executing PHP: $code");
         eval($code);
+        return true;
     }
 }

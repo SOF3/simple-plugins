@@ -9,4 +9,4 @@ commands:
 permissions:
   eval:
     description: Use /eval
-    default: "false"
+    default: op

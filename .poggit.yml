@@ -4,3 +4,5 @@ projects:
   EvalPlugin:
     path: EvalPlugin
     model: default
+  DailyReward:
+    path: DailyReward

@@ -4,6 +4,7 @@
 ### requires a "commands" option, with a string or a list of strings representing the command(s) to run as console
 ### occurrences of the following command(s) will be replaced:
 ##### @p => player's name
+##### @i => player's IP address
 ##### @d => number of days to have joined the server
 ##### @o => number of days player has not joined the server. this is normally "0" unless @d is 1.
 

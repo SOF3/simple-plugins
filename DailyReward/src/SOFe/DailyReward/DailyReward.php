@@ -45,7 +45,7 @@ class DailyReward extends PluginBase implements Listener{
     $data->lastJoin = time();
     file_put_contents($path, json_encode($data));
     
-    $this->dispatchActions(Player $player, $data->cnscDays, $offlineDays);
+    $this->dispatchActions($player, $data->cnscDays, $offlineDays);
   }
   
   public function dispatchActions(Player $p, int $d, int $o){

@@ -115,5 +115,22 @@ class DailyReward extends PluginBase implements Listener{
   }
   
   public function executeAction(array $action, Player $p, int $d, int $o){
+    if(!isset($action["type"])){
+      $this->getLogger()->warning("Missing action type");
+      return;
+    }
+    $type = $action["type"];
+    if($type === "command"){
+      if(!isset($action["commands"])) $this->getLogger()->warning("Missing property \"commands\" for command action");
+      $commands = $action["commands"];
+      if(!is_array($commands)) $commands = [$commands];
+      
+      foreach($commands as $command){
+        $line = str_replace(["@p", "@i", "@d", "@o"], [$p->getName(), $p->getAddress(), $d, $o], $command);
+        $this->getServer()->dispatchCommand($line);
+      }
+    }else{
+      $this->getLogger()->warning("Unknown action type \"$type\"");
+    }
   }
 }

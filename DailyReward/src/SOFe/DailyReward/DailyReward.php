@@ -19,6 +19,7 @@ class DailyReward extends PluginBase implements Listener{
     if(!is_file($path)){
       $data = (object) [
         "lastJoin" => 0,
+        "cnscDays" => 0,
         "timezone" => 0, // can be changed via config
       ];
     }else{
@@ -26,29 +27,93 @@ class DailyReward extends PluginBase implements Listener{
       if(!is_object($data)){
         $data = (object) [
           "lastJoin" => 0,
+          "cnscDays" => 0,
           "timezone" => 0, // can be changed via config
         ];
       }
     }
     $timeNow = time() + $data->timezone;
     $timeLast = $data->lastJoin + $data->timezone;
-    $daysDiff = ((int) ($timeNow / 86400)) - ((int) $timeLast / 86400);
-    
+    $offlineDays = ((int) ($timeNow / 86400)) - ((int) $timeLast / 86400) - 1;
+    if($offlineDays === -1){
+      return; // no need to modify lastJoin since it is the same day
+    }elseif($offlineDays > 0){
+      $data->cnscDays = 1;
+    }else{
+      $data->cnscDays++;
+    }
     $data->lastJoin = time();
     file_put_contents($path, json_encode($data));
     
-    $action = $this->getConfig()->get("actions")[$daysDiff] ?? [];
-    if($action !== []){
-      $this->dispatchAction($action, $event->getPlayer());
+    $this->dispatchActions(Player $player, $data->cnscDays, $offlineDays);
+  }
+  
+  public function dispatchActions(Player $p, int $d, int $o){
+    foreach($this->getConfig()->get("actions") as $num => $action){
+      $num++;
+      if(!isset($action["days"])){
+        $this->getLogger()->warning("Skipping action #$num without \"days\" specified");
+        continue;
+      }
+      if($this->matchesRange($action["days"], $d)){
+        $this->executeAction($action, $p, $d, $o);
+      }
     }
   }
   
-  public function dispatchAction(array $action, Player $player){
-    $type = $action["type"]; // not gonna validate the config
-    if($type === "command"){
-      $this->getServer()->dispatchCommand(new ConsoleCommandSender(), str_replace("@p", $player->getName(), $action["command"]));
-    }else{
-      throw new \RuntimeException("Unsupported type $type");
+  public function matchesRange(string $range, int $d) : bool{
+    $multiple = false;
+    if($range{strlen($range) - 1} === "n"){
+      $multiple = true;
+      $range = substr($range, 0, -1);
     }
+    $parts = explode("-", $range);
+    $from = $parts[0];
+    $to = $parts[1] ?? $from;
+    
+    if($from === "" and $to === ""){
+      $this->getLogger()->warning("Invalid range \"$range\"");
+      return false;
+    }
+    
+    if($from === ""){
+      $from = 1;
+    }else{
+      if(!is_numeric($from)){
+        $this->getLogger()->warning("Invalid range minimum \"$from\"");
+        return false;
+      }
+      $from = (int) $from;
+      if($from < 1){
+        $this->getLogger()->warning("Invalid range minimum \"$from\": should be a positive integer");
+        return false;
+      }
+    }
+    
+    if($to === ""){
+      $to = PHP_INT_MAX;
+    }else{
+      if(!is_numeric($to)){
+        $this->getLogger()->warning("Invalid range maximum \"$to\"");
+        return false;
+      }
+      $to = (int) $to;
+      if($to < $from){
+        $this->getLogger()->warning("Invalid range maximum \"$to\": should be greater than range minimum");
+        return false;
+      }
+    }
+    
+    if($multiple){
+      if($from !== $to){
+        $this->getLogger()->warning("It is unreasonable to check the multiples of a range! ({$from}-{$to}n)");
+      }
+      return ($d % $from) === 0;
+    }else{
+      return $from <= $d and $d <= $to;
+    }
+  }
+  
+  public function executeAction(array $action, Player $p, int $d, int $o){
   }
 }

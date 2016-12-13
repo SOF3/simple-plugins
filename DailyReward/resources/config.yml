@@ -1,0 +1,33 @@
+# supported action types: command
+
+# action type command:
+### requires a "commands" option, with a string or a list of strings representing the command(s) to run as console
+### occurrences of the following command(s) will be replaced:
+##### @p => player's name
+##### @d => number of days to have joined the server
+##### @o => number of days player has not joined the server. this is normally "0" unless @d is 1.
+
+# option "days" can be exactly the number of consecutive days having joined the server, or a range, or a range of integers' multiples using the suffix "n"
+# examples:
+### 2         exactly two consecutive days online
+### -5        one to five consecutive days online (inclusive for 1 and 5) (since 1 is included, this will also run the first time player joins the server)
+### 6-        at least six consecutive days online
+### 8-14      eight to fourteen days online (inclusive for 8 and 14)
+### 7n        runs on the 7th day, 14th day, etc. that the player has been consecutively joining the server for
+
+actions:
+  - days: 1
+    type: command
+    commands: "msg @p Hey! It has been @o days we haven't seen you!"
+  - days: 2
+    type: command
+    commands: "msg @p You have come on the server for two consecutive days! Come back tomorrow to get a diamond!"
+  - days: 3-
+    type: command
+    commands:
+      - "give @p diamond 1"
+      - "msg @p Thank you for your support! You have received a diamond!"
+  - days: 7n
+    type: command
+    commands:
+      - "msg @p Yet another week you are joining the server every day! Here is a diamond block for you!"

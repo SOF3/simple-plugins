@@ -107,6 +107,7 @@ class DailyReward extends PluginBase implements Listener{
     if($multiple){
       if($from !== $to){
         $this->getLogger()->warning("It is unreasonable to check the multiples of a range! ({$from}-{$to}n)");
+        return false;
       }
       return ($d % $from) === 0;
     }else{

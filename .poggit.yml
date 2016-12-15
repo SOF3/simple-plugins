@@ -3,6 +3,7 @@ branches: master
 projects:
   EvalPlugin:
     path: EvalPlugin
-    model: default
   DailyReward:
     path: DailyReward
+  SessionsExample:
+    path: SessionsExample

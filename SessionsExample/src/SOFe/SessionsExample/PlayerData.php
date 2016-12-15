@@ -51,4 +51,15 @@ class PlayerData{
     public function getLastOnline() : float{
         return $this->lastOnline;
     }
+
+    public function incrementJoins() {
+        $this->joins++;
+    }
+    
+    public function addOnlineTime(float $add) : float{
+        $this->onlineTime += $add;
+    }
+
+    public function updateLastOnline(){
+        $this->lastOnline = microtime(true);
 }

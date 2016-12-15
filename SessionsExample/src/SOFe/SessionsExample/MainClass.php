@@ -1,6 +1,6 @@
 <?php
 
-namespace SessionsExample;
+namespace SOFe\SessionsExample;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;

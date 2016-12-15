@@ -62,4 +62,5 @@ class PlayerData{
 
     public function updateLastOnline(){
         $this->lastOnline = microtime(true);
+    }
 }

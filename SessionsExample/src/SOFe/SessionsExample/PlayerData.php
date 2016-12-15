@@ -13,6 +13,8 @@ class PlayerData{
     private $onlineTime = 0;
     private $lastOnline = 0;
 
+    private $lastLoadTime;
+
     public function __construct(MainClass $main, string $username){ // we need to pass the main class instance too so that PlayerData knows which directory to save in
         // my practice is to always put these lines for defining immutable (cannot be
         // changed) class properties in the beginning of a constructor, because the
@@ -33,6 +35,16 @@ class PlayerData{
         $this->joins = $data["joins"];
         $this->onlineTime = $data["onlineTime"];
         $this->lastOnline = $data["lastOnline"];
+        
+        $this->lastLoadTime = microtime(true);
+    }
+    
+    public function save(){
+        yaml_emit_file($this->getPath(), [
+            "joins" => $this->getJoins(),
+            "onlineTime" => $this->getOnlineTime(),
+            "lastOnline" => $this->getLastOnline()
+        ]);
     }
 
     public function getPath() : string{
@@ -45,6 +57,9 @@ class PlayerData{
     }
 
     public function getOnlineTime() : float{
+        $micro = microtime(true);
+        $this->onlineTime += $micro - $this->lastLoadTime;
+        $this->lastLoadTime = $micro;
         return $this->onlineTime;
     }
 
@@ -54,10 +69,6 @@ class PlayerData{
 
     public function incrementJoins() {
         $this->joins++;
-    }
-    
-    public function addOnlineTime(float $add) : float{
-        $this->onlineTime += $add;
     }
 
     public function updateLastOnline(){

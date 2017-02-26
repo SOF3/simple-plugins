@@ -111,7 +111,7 @@ class SimplePermissions extends PluginBase implements Listener{
 						"year" => 86400 * 365,
 					];
 					if(!is_numeric($quantity) || !isset($units[$unit])){
-						$issuer->sendMessage("Error: Cannot understand time period \"$quantity $unit\"")
+						$issuer->sendMessage("Error: Cannot understand time period \"$quantity $unit\"");
 						return true;
 					}
 					$period = $units[$unit] * floatval($quantity);

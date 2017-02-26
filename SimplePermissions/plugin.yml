@@ -1,0 +1,25 @@
+name: SimplePermissions
+version: 1.0.0
+api: [1.0.0, 2.0.0, 3.0.0-ALPHA4]
+author: SOFe
+main: SOFe\SimplePermissions\SimplePermissions
+commands:
+    setperm:
+        description: Sets the permission of a player for a defined period
+        usage: /setperm <username> <permission> [Y|n] [timeout, default infinity] [s|min|H|d|w|m|y]
+        permission: simplepermissions.setperm
+    rmperm:
+        description: Unsets the previous permission configuration of a player
+        usage: /rmperm <exact name> <permission> OR /rmperm ~<starting letters> <permission>
+        permission: simplepermissions.rmperm
+permissions:
+    simplepermissions:
+        description: Use SimplePermissions commands
+        default: op
+        children:
+            simplepermissions.setperm:
+                description: Permission to use /setperm
+                default: op
+            simplepermissions.rmperm:
+                description: Permission to use /rmperm
+                default: op

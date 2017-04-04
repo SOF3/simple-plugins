@@ -32,7 +32,7 @@ class SimplePermissions extends PluginBase implements Listener{
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new class($this) extends PluginTask{
 			public function onRun($t){
 				$this->owner->tick();
-				if($t & 0x1000) $this->owner->saveData();
+				if(($t & 0x1111) === 0x1111) $this->owner->saveData();
 			}
 		}, 1);
 	}

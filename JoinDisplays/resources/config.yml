@@ -1,0 +1,22 @@
+---
+# Available variables:
+## @p: name of joining player
+## @i: player IP
+## @t: server time (using server timezone)
+## @s: server name (motd)
+## @c: number of players online
+join-operations:
+  - whisper: Welcome @p to @s!
+    sender: @s
+  - message: This is a message!
+  - delay: 60 # in seconds
+  - popup: You have joined the server for a minute
+  - popup: This popup will be displayed
+    subtitle: with a subtitle down here
+  - tip: This is a tip
+  - actionbar: And this is an actionbar message
+  - title: You can also add title
+    subtitle: with much customization!
+    fadein: 1
+    stay: 3
+    fadeout: 1

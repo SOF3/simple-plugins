@@ -9,3 +9,5 @@ projects:
     path: SimplePermissions
   JoinDisplays:
     path: JoinDisplays
+  ConfigSalad:
+    path: ConfigSalad

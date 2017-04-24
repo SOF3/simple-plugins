@@ -1,0 +1,70 @@
+---
+commands:
+  info: # Command name here
+    description: Shows server info # Command description here. Default empty message.
+    access: true # Who can use this command? Possible values: op, notop, true, false. "true" => everyone can use, "false" => nobody can use, "op" => only ops can use, "notop" => only non-ops can use. Default "true".
+    permission: configsalad.info # Permission node. Delete this line if you don't know what it is. Default: configsalad.commands.<command name>
+    aliases: # aliases of the command
+      - i
+    response: # response message, line by line. $xxxx are variables, see reference at the end of this file
+      - "MotD: $server-motd"
+      - "Players online: $server-online"
+  infoadmin:
+    description: Shows server info for admin
+    access: op
+    # I don't put "permission" here, so it is automatically "configsalad.infoadmin"
+    response:
+      - "TPS: $server-tps"
+      - "TPS load: $server-"
+  configsalad:
+    description: Shows the version of ConfigSalad used
+    response: "This server uses ConfigSalad v$configsalad-version"
+
+
+## Variables:
+# $server-motd = server motd (server-name in server.properties)
+# $server-version = server version
+# $server-tps = server TPS
+# $server-load = server TPS load
+# $server-uptime = server uptime
+# $server-online = number of online players
+# $server-plugins = number of plugins loaded
+
+# $configsalad-version = version of ConfigSalad
+
+# $player = name of player
+# $player2 = name of the second player (if any)
+# $player-health = hearts of player
+# $player-ip = IP address of player
+# $player-xcoord = X-coordinate of player
+# $player-ycoord = Y-coordinate of player
+# $player-zcoord = Z-coordinate of player
+
+# note that $player2-xxxx will also work if there is a second player
+
+## Color codes:
+# You can use the § color codes, or use the following:
+# &BLACK = §0
+# &DARK_BLUE = §1
+# &DARK_GREEN = §2
+# &DARK_AQUA = §3
+# &DARK_RED = §4
+# &DARK_PURPLE = §5
+# &GOLD = §6
+# &GRAY = §7
+# &DARK_GRAY = §8
+# &BLUE = §9
+# &GREEN = §a
+# &AQUA = §b
+# &RED = §c
+# &LIGHT_PURPLE = §d
+# &YELLOW = §e
+# &WHITE = §f
+
+# &OBFUSCATED = §k
+# &BOLD = §l
+# &STRIKETHROUGH = §m
+# &UNDERLINE = §n
+# &ITALIC = §o
+# &RESET = §r
+...

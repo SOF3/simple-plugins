@@ -1,0 +1,11 @@
+name: ConfigSalad
+author: SOFe
+version: 0.1.0
+api: [3.0.0-ALPHA5]
+main: SOFe\ConfigSalad\ConfigSalad
+permissions:
+  configsalad:
+    children:
+      configsalad.commands:
+        description: Parent node to all commands registered from config.yml
+        default: false

@@ -28,6 +28,7 @@ class MentionPings extends PluginBase implements Listener{
 	}
 
 	private $startSymbol, $endSymbol;
+	private $rawSubstring;
 
 	public function onEnable(){
 		$this->saveDefaultConfig();
@@ -41,6 +42,7 @@ class MentionPings extends PluginBase implements Listener{
 		};
 		$this->startSymbol = preg_replace_callback($pattern, $callback, $this->getConfig()->get("start-symbol", '${YELLOW}${ITALIC}'));
 		$this->endSymbol = preg_replace_callback($pattern, $callback, $this->getConfig()->get("end-symbol", '${FT}'));
+		$this->rawSubstring = $this->getConfig()->get("raw-substring", false);
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
@@ -53,21 +55,24 @@ class MentionPings extends PluginBase implements Listener{
 		$message = $event->getMessage();
 		$recipients = $event->getRecipients();
 		foreach($recipients as $i => $recipient){
-			$changed = false;
 			$name = $recipient->getName();
-			while(($pos = stripos($message, $recipient->getName())) !== false){
-				$changed = true;
+			$escaped = preg_quote($name, "/");
+			$pattern = $this->rawSubstring ? "/$escaped/" : ('/(^|[^A-Za-z0-9_])(' . $escaped . ')($|[^A-Za-z0-9_])/');
+			$lastOffset = 0;
+			$newMessage = preg_replace_callback($pattern, function($match) use ($event, $message, &$lastOffset){
+				list($whole, $front, $name, $back) = $this->rawSubstring ? [$match[0], "", $match[0], ""] : $match;
+				$lastOffset = strpos($message, $whole, $lastOffset);
 				$subOutput = $this->getServer()->getLanguage()->translateString($event->getFormat(),
-					[$event->getPlayer()->getDisplayName(), substr($message, 0, $pos)]);
+					[$event->getPlayer()->getDisplayName(), substr($message, 0, $lastOffset)]);
 				$endSymbol = self::searchLastToken($subOutput, TextFormat::WHITE);
-				$message = substr_replace(
-					substr_replace($message, str_replace('${RT}', $endSymbol, $this->endSymbol), $pos + strlen($name), 0),
-					$this->startSymbol, $pos, 0);
-			}
-			if($changed){
+				$edit = $front . $this->startSymbol . $name . str_replace('${RT}', $endSymbol, $this->endSymbol) . $back;
+				$lastOffset += strlen($edit);
+				return $edit;
+			}, $message);
+			if($message !== $newMessage){
 				unset($recipients[$i]);
 				$recipient->sendMessage($this->getServer()->getLanguage()->translateString($event->getFormat(),
-					[$event->getPlayer()->getDisplayName(), $message]));
+					[$event->getPlayer()->getDisplayName(), $newMessage]));
 				$recipient->getLevel()->addSound(new PopSound($recipient));
 			}
 		}

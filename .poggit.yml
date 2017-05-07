@@ -11,3 +11,5 @@ projects:
     path: JoinDisplays
   ConfigSalad:
     path: ConfigSalad
+  MentionPings:
+    path: MentionPings

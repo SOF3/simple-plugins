@@ -13,3 +13,6 @@ Simple pocketmine plugins for immediate use
 
 ## ConfigSalad [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/ConfigSalad)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/ConfigSalad)
 A salad of different information-related features. Simple to setup, kills many plugin requests.
+
+## MentionPings [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/MentionPings)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/MentionPings)
+Highlight and play sound when player is mentioned in chat

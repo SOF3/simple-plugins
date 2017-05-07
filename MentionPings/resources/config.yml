@@ -1,0 +1,9 @@
+---
+# For start-symbol and end-symbol, the following color codes are allowed:
+## BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE, YELLOW, WHITE, OBFUSCATED, BOLD, STRIKETHROUGH, UNDERLINE, ITALIC, RESET
+## Put them inside ${} and they will be replaced with the
+# the symbols inserted before the mentioned keyword
+start-symbol: "${YELLOW}${ITALIC}"
+# the symbols inserted after the mentioned keyword
+# ${FT} will be replaced with the last detected color before the name, or WHITE if none are detected.
+end-symbol: "${FT}"

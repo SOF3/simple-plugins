@@ -5,7 +5,6 @@ namespace SOFe\MentionPings;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\level\sound\PopSound;
-use pocketmine\level\sound\Sound;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
@@ -58,7 +57,9 @@ class MentionPings extends PluginBase implements Listener{
 			$name = $recipient->getName();
 			while(($pos = stripos($message, $recipient->getName())) !== false){
 				$changed = true;
-				$endSymbol = self::searchLastToken(substr($message, 0, $pos), TextFormat::WHITE);
+				$subOutput = $this->getServer()->getLanguage()->translateString($event->getFormat(),
+					[$event->getPlayer()->getDisplayName(), substr($message, 0, $pos)]);
+				$endSymbol = self::searchLastToken($subOutput, TextFormat::WHITE);
 				$message = substr_replace(
 					substr_replace($message, str_replace('${RT}', $endSymbol, $this->endSymbol), $pos + strlen($name), 0),
 					$this->startSymbol, $pos, 0);

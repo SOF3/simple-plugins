@@ -19,3 +19,6 @@ Highlight and play sound when player is mentioned in chat
 
 ## ConsolePush [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/ConsolePush)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/ConsolePush)
 Improve console input experience with escape keys
+
+## DelayedForms [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/DelayedForms)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/DelayedForms)
+Display a warning before showing a form. preventing accidentally submitting/closing the form.

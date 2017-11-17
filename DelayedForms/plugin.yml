@@ -1,0 +1,5 @@
+name: DelayedForms
+description: Display a warning before showing a form. preventing accidentally submitting/closing the form.
+main: SOFe\DelayedForms\DelayedForms
+author: SOFe
+api: 3.0.0-ALPHA10

@@ -13,5 +13,7 @@ projects:
     path: ConfigSalad
   MentionPings:
     path: MentionPings
+  ConsolePush:
+    path: ConsolePush
   DelayedForms:
     path: DelayedForms

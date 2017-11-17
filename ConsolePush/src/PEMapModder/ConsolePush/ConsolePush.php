@@ -51,7 +51,7 @@ class ConsolePush extends PluginBase implements Listener{
 			return;
 		}
 
-		$cmd = $this->innerBuffer . (strpos($cmd, "\\ ") === 0 ? substr($cmd, 2) : $cmd);
+		$cmd = $this->innerBuffer . (strpos($cmd, "\\ ") === 0 ? substr($cmd, 1) : $cmd);
 		$this->innerBuffer = "";
 		if(strlen($cmd) > 2 and $cmd{strlen($cmd) - 2} === "\\"){
 			switch($cmd{strlen($cmd) - 1}){
@@ -75,7 +75,6 @@ class ConsolePush extends PluginBase implements Listener{
 			}
 		}
 		$event->setCommand($cmd);
-		var_dump($cmd);
 
 		if($this->bufferEnabled){
 			$this->stopBuffering();

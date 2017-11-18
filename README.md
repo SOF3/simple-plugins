@@ -17,7 +17,7 @@ A salad of different information-related features. Simple to setup, kills many p
 ## MentionPings [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/MentionPings)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/MentionPings)
 Highlight and play sound when player is mentioned in chat
 
-## ConsolePush [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/ConsolePush)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/ConsolePush)
+## ConsolePush [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/ConsolePush)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/ConsolePush) [![](https://poggit.pmmp.io/shield.approved/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush) [![](https://poggit.pmmp.io/shield.spoon/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush) [![](https://poggit.pmmp.io/shield.dl.total/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush)
 Improve console input experience with escape keys
 
 ## DelayedForms [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/DelayedForms)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/DelayedForms)

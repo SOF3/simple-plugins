@@ -1,3 +1,5 @@
+# ConsolePush [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/ConsolePush)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/ConsolePush) [![](https://poggit.pmmp.io/shield.approved/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush) [![](https://poggit.pmmp.io/shield.spoon/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush) [![](https://poggit.pmmp.io/shield.dl.total/ConsolePush)](https://poggit.pmmp.io/p/ConsolePush)
+
 ConsolePush is an ease-of-access tool that lets you use the console interface more conveniently. With ConsolePush, you can:
 
 * [buffer the server output](#output-buffering)

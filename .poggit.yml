@@ -1,3 +1,4 @@
+# https://poggit.pmmp.io/ci/SOF3/simple-plugins
 projects:
   EvalPlugin:
     path: EvalPlugin

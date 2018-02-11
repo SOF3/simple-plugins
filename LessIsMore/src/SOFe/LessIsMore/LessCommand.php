@@ -48,11 +48,7 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
-		if(!isset($args[0])){
-			$sender->sendMessage(TextFormat::RED . "Usage: " . $this->getUsage());
-			return;
-		}
-		$page = (int) $args[0];
+		$page = isset($args[0]) ? (int) $args[0] : 1;
 		if($page < 1 || $page > \count($this->pages)){
 			$sender->sendMessage(TextFormat::RED . "Usage: " . $this->getUsage());
 			return;

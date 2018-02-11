@@ -18,3 +18,5 @@ projects:
     path: ConsolePush
   DelayedForms:
     path: DelayedForms
+  LessIsMore:
+    path: LessIsMore

@@ -1,0 +1,58 @@
+LessIsMore:
+  # number of lines per page
+  lines per page: 5
+
+# Below this line, you can freely add or remove anything to create, delete or modify commands!
+
+# You can create a simple command with a single line of response like this:
+less: Less is more!
+
+# You can create a simple command with 5 lines per page like this:
+# the first line is the command name without the "/"
+rules:
+# Add lines to this
+- Rule 1
+- Rule 2
+- Rule 3
+- Rule 4
+- Rule 5
+- Rule 6. This rule will automatically go to the next page, because only the first 5 lines will be on page 1.
+- Rule 7
+- Rule 8
+
+# You may want to add description and/or aliases to this command:
+description:
+  description: What do you think a description command's description would be?
+  aliases:
+  - desc
+  - descr
+  # and then you add the usual lines under "lines", but with two spaces in front
+  lines:
+  - The /description command actually does nothing!
+  - This isn't surprising, right?
+  - But please forgive me, because it's hard for a developer to think of demo examples!
+
+# If you want to specify a different lines-per-page in a command, you can do it like this:
+info:
+  lines per page: 3
+  lines:
+  - This server uses LessIsMore.
+  - And LessIsMore is a very simple plugin!
+  - Although it is simple, you can do many interesting things with it!
+  - This line will be on the second page, because lines per page for this /info command is 3!
+
+# Or if you want to change to a page break at the lines called "==PAGE BREAK=="
+more:
+  # You can actually set this to anything you like!
+  page break: ==PAGE BREAK==
+  lines:
+  - Do you believe that less is more?
+  - If you don't believe, type "/more 2"!
+  - If you believe, type "/more 3"!
+  - ==PAGE BREAK==
+  - You typed "/more 2" because you wanted to know more about what this command tells you.
+  - But this LessIsMore plugin actually makes this page display less.
+  - But if we revealed everything on page 1, you won't read it, so you will read less!
+  - And now you are reading more!
+  - ==PAGE BREAK==
+  -

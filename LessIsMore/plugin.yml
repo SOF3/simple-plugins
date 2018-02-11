@@ -1,0 +1,10 @@
+name: LessIsMore
+version: 1.0.0
+api:
+- 3.0.0-ALPHA11 # uses TextFormat::colorize()
+author: SOFe
+main: SOFe\LessIsMore\LessIsMore
+
+permissions:
+  lessismore:
+    description: Root permission node for commands created with LessIsMore

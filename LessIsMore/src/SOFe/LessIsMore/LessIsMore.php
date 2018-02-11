@@ -8,7 +8,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 
 class LessIsMore extends PluginBase{
-
 	public function onEnable() : void{
 		$this->saveDefaultConfig();
 		$genLpp = $this->getConfig()->get("LessIsMore", [])["lines per page"] ?? 5;

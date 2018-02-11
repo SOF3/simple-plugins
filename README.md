@@ -22,3 +22,6 @@ Improve console input experience with escape keys
 
 ## DelayedForms [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/DelayedForms)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/DelayedForms)
 Display a warning before showing a form. preventing accidentally submitting/closing the form.
+
+## LessIsMore [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/LessIsMore)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/LessIsMore) [![](https://poggit.pmmp.io/shield.approved/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore) [![](https://poggit.pmmp.io/shield.spoon/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore) [![](https://poggit.pmmp.io/shield.dl.total/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore)
+Create custom informational commands

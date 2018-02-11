@@ -5,7 +5,7 @@ LessIsMore:
 # Below this line, you can freely add or remove anything to create, delete or modify commands!
 
 # You can create a simple command with a single line of response like this:
-less: Less is more!
+less: &aLess is more!
 
 # You can create a simple command with 5 lines per page like this:
 # the first line is the command name without the "/"
@@ -46,7 +46,7 @@ more:
   # You can actually set this to anything you like!
   page break: ==PAGE BREAK==
   lines:
-  - Do you believe that less is more?
+  - &eDo you believe that less is more?
   - If you don't believe, type "/more 2"!
   - If you believe, type "/more 3"!
   - ==PAGE BREAK==
@@ -55,4 +55,4 @@ more:
   - But if we revealed everything on page 1, you won't read it, so you will read less!
   - And now you are reading more!
   - ==PAGE BREAK==
-  -
+  - &aThanks for believing! As a reward, I now send you a useless message!

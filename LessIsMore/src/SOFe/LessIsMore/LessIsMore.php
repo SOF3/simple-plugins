@@ -39,7 +39,7 @@ class LessIsMore extends PluginBase{
 								}
 								$temp = [];
 							}else{
-								$temp[] = $line;
+								$temp[] = $this->formatLine($cmd, $line);
 							}
 						}
 						if(!empty($temp)){

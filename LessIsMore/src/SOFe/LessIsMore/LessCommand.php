@@ -25,6 +25,7 @@ namespace SOFe\LessIsMore;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
+use pocketmine\permission\Permission;
 use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat;
 
@@ -36,6 +37,12 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 
 	public function __construct(LessIsMore $plugin, string $name, string $description, array $aliases, array $pages){
 		parent::__construct($name, $description, "/$name [1 - " . \count($pages) . "]", $aliases);
+		$parent = $plugin->getServer()->getPluginManager()->getPermission("lessismore");
+		\assert($parent !== null);
+		$permission = new Permission("lessismore.$name", "Permission to use /$name");
+		$parent->getChildren()[$permission->getName()] =true;
+		$plugin->getServer()->getPluginManager()->addPermission($permission);
+		$this->setPermission("lessismore.$name");
 		$this->plugin = $plugin;
 		$this->pages = $pages;
 	}

@@ -25,3 +25,6 @@ Display a warning before showing a form. preventing accidentally submitting/clos
 
 ## LessIsMore [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/LessIsMore)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/LessIsMore) [![](https://poggit.pmmp.io/shield.approved/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore) [![](https://poggit.pmmp.io/shield.spoon/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore) [![](https://poggit.pmmp.io/shield.dl.total/LessIsMore)](https://poggit.pmmp.io/p/LessIsMore)
 Create custom informational commands
+
+## DeadlyFlight [![Poggit-CI](https://poggit.pmmp.io/ci.badge/SOF3/simple-plugins/DeadlyFlight)](https://poggit.pmmp.io/ci/SOF3/simple-plugins/DeadlyFlight)
+When you are in air too long, you take damage. [Idea from gurun](http://mcpedevs.pocketmine.net/quotes/#505).

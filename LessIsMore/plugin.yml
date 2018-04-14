@@ -2,6 +2,7 @@ name: LessIsMore
 version: 1.0.0
 api:
 - 3.0.0-ALPHA11 # uses TextFormat::colorize()
+- 3.0.0-ALPHA12
 author: SOFe
 main: SOFe\LessIsMore\LessIsMore
 

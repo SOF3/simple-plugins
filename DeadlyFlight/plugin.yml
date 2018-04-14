@@ -1,6 +1,6 @@
 name: DeadlyFlight
 version: 1.0.0
-api: [3.0.0-ALPHA11]
+api: [3.0.0-ALPHA11, 3.0.0-ALPHA12]
 main: SOFe\DeadlyFlight\Main
 author: SOFe
 description: 'Idea from gurun: "f I was a host provider, I would allow flying, but in every game, I would connect health with touching of blocks. So maintaining health can only be done by walking on blocks." http://mcpedevs.pocketmine.net/quotes/#505'

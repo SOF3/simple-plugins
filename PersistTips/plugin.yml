@@ -1,0 +1,5 @@
+name: PersistTips
+main: SOFe\PersistTips\PersistTips
+author: SOFe
+api: [3.0.0-ALPHA12]
+version: 1.0.0

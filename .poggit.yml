@@ -22,3 +22,5 @@ projects:
     path: LessIsMore
   DeadlyFlight:
     path: DeadlyFlight
+  ChatMarkdown:
+    path: ChatMarkdown

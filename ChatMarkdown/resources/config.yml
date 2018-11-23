@@ -1,0 +1,238 @@
+---
+### You can find a copy of this file on https://github.com/SOF3/simple-plugins/raw/master/ChatMarkdown/resources/config.yml
+
+### The following "then" formats are allowed:
+### - black
+### - dark_blue
+### - dark_green
+### - dark_aqua
+### - dark_red
+### - dark_purple
+### - gold
+### - gray
+### - dark_gray
+### - blue
+### - green
+### - aqua
+### - red
+### - light_purple
+### - yellow
+### - white
+### - obfuscated
+### - bold
+### - strikethrough
+### - underline
+### - italic
+
+patterns:
+### Just keep these settings if you like Discord's "Sweet Styles"
+### Reference: https://support.discordapp.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-
+  # This pattern means: If something starts with "**" and ends with "**", the part in the middle should be bold
+  - start: "**"
+    end: "**"
+    then: bold
+
+  # ChatMarkdown is greedy. When it sees the message "xyz **abc** xyz", it first checks using the longer pattern **abc**
+  # before using the shorter pattern *abc*
+  - start: "*"
+    end: "*"
+    then: italic
+
+  - start: "__"
+    end: "__"
+    then: underline
+
+  - start: "_"
+    end: "_"
+    # If the _xx_ is not full word, i.e. it follows an alphabet/digit/underscore or precedes one, the pattern is not applied
+    # So XYZ_ABC_XYZ, XYZ_ABC_, _ABC_XYZ, 123_ABC_, _ABC_123, etc. will not become italic, but XYZ _ABC_ XYZ will be formatted.
+    # This only applies to the 26 English alphabets. Accented alphabets or alphabets in other languages are not included.
+    wholeWord: true
+    then: italic
+
+  - start: "~~"
+    end: "~~"
+    then: strikethrough
+### End of Discord default settings
+
+### If you want Slack message formatting, delete the Discord part above, then delete the single leading # in the lines below
+### Reference: https://api.slack.com/docs/message-formatting#message_formatting)
+#  - start: "*"
+#    end: "*"
+#    then: bold
+#  - start: "_"
+#    end: "_"
+#    # This behaviour is a bit different from Slack, because Slack also counts accented alphabets.
+#    # For simplicity, we are only using Discord rules (only 26 alphabets and 10 digits and underscore count)
+#    wholeWord: true
+#    then: italic
+#  - start: "~"
+#    end: "~"
+#    then: strikethrough
+### End of Slack default settings
+
+### If you want GitHub message formatting, delete the Discord part above, then delete the single leading # in the lines below
+### Reference: https://help.github.com/articles/basic-writing-and-formatting-syntax/#styling-text
+#  - start: "**"
+#    end: "**"
+#    then: bold
+#  - start: "__"
+#    end: "__"
+#    wholeWord: true
+#    then: bold
+#  - start: "*"
+#    end: "*"
+#    then: italic
+#  - start: "_"
+#    end: "_"
+#    then: italic
+#  - start: "~~"
+#    end: "~~"
+#    wholeWord: true
+#    then: strikethrough
+### End of GitHub default settings
+
+### If you want to support formatting in a way similar to BB code, you can delete the single leading # in the lines below.
+### For example, writing abc[red]def[/red]ghi will be displayed as "abcdefghi" with "def" displayed in red.
+#  - start: "[black]"
+#    end: "[/black]"
+#    then: black
+#  - start: "[dark_blue]"
+#    end: "[/dark_blue]"
+#    then: dark_blue
+#  - start: "[dark_green]"
+#    end: "[/dark_green]"
+#    then: dark_green
+#  - start: "[dark_aqua]"
+#    end: "[/dark_aqua]"
+#    then: dark_aqua
+#  - start: "[dark_red]"
+#    end: "[/dark_red]"
+#    then: dark_red
+#  - start: "[dark_purple]"
+#    end: "[/dark_purple]"
+#    then: dark_purple
+#  - start: "[gold]"
+#    end: "[/gold]"
+#    then: gold
+#  - start: "[gray]"
+#    end: "[/gray]"
+#    then: gray
+#  - start: "[dark_gray]"
+#    end: "[/dark_gray]"
+#    then: dark_gray
+#  - start: "[blue]"
+#    end: "[/blue]"
+#    then: blue
+#  - start: "[green]"
+#    end: "[/green]"
+#    then: green
+#  - start: "[aqua]"
+#    end: "[/aqua]"
+#    then: aqua
+#  - start: "[red]"
+#    end: "[/red]"
+#    then: red
+#  - start: "[light_purple]"
+#    end: "[/light_purple]"
+#    then: light_purple
+#  - start: "[yellow]"
+#    end: "[/yellow]"
+#    then: yellow
+#  - start: "[white]"
+#    end: "[/white]"
+#    then: white
+#  - start: "[obfuscated]"
+#    end: "[/obfuscated]"
+#    then: obfuscated
+#  - start: "[bold]"
+#    end: "[/bold]"
+#    then: bold
+#  - start: "[strikethrough]"
+#    end: "[/strikethrough]"
+#    then: strikethrough
+#  - start: "[underline]"
+#    end: "[/underline]"
+#    then: underline
+#  - start: "[italic]"
+#    end: "[/italic]"
+#    then: italic
+### End of BB code default settings
+
+### Alternatively, you may want a simpler syntax: abc%red%def%ghi will be displayed as "abcdefghi" with "def" in red
+### Delete the single leading # in the lines below.
+#  - start: "%black%"
+#    end: "%"
+#    then: black
+#  - start: "%dark_blue%"
+#    end: "%"
+#    then: dark_blue
+#  - start: "%dark_green%"
+#    end: "%"
+#    then: dark_green
+#  - start: "%dark_aqua%"
+#    end: "%"
+#    then: dark_aqua
+#  - start: "%dark_red%"
+#    end: "%"
+#    then: dark_red
+#  - start: "%dark_purple%"
+#    end: "%"
+#    then: dark_purple
+#  - start: "%gold%"
+#    end: "%"
+#    then: gold
+#  - start: "%gray%"
+#    end: "%"
+#    then: gray
+#  - start: "%dark_gray%"
+#    end: "%"
+#    then: dark_gray
+#  - start: "%blue%"
+#    end: "%"
+#    then: blue
+#  - start: "%green%"
+#    end: "%"
+#    then: green
+#  - start: "%aqua%"
+#    end: "%"
+#    then: aqua
+#  - start: "%red%"
+#    end: "%"
+#    then: red
+#  - start: "%light_purple%"
+#    end: "%"
+#    then: light_purple
+#  - start: "%yellow%"
+#    end: "%"
+#    then: yellow
+#  - start: "%white%"
+#    end: "%"
+#    then: white
+#  - start: "%obfuscated%"
+#    end: "%"
+#    then: obfuscated
+#  - start: "%bold%"
+#    end: "%"
+#    then: bold
+#  - start: "%strikethrough%"
+#    end: "%"
+#    then: strikethrough
+#  - start: "%underline%"
+#    end: "%"
+#    then: underline
+#  - start: "%italic%"
+#    end: "%"
+#    then: italic
+### End of %format% default settings
+
+### Feel free to add your own patterns!
+
+###
+
+### Backslash escaping
+### If set to true, symbols following \ will not be matched in formatting modifiers, and \\ will be changed to \
+### e.g. a*b\*c*d will be displayed as ab*cd, where b*c in the middle are italic.
+### e.g. a*\*b**d will be displayed as a*b*d, where the *b in the middle are italic.
+backslash-escape: true
+...

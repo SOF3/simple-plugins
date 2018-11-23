@@ -56,7 +56,7 @@ class LessIsMore extends PluginBase{
 				$pages[] = [$options];
 			}
 
-			$this->getServer()->getCommandMap()->register("less", new LessCommand($this, $cmd, $description, $aliases, $pages));
+			$this->getServer()->getCommandMap()->register("lessismore", new LessCommand($this, $cmd, $description, $aliases, $pages));
 		}
 	}
 

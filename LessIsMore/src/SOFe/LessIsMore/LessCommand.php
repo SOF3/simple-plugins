@@ -70,12 +70,12 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 		}
 
 		if($this->preferForms && $sender instanceof Player){
-			$form = new ModalForm();
+			$form = new ModalForm(null);
 			$form->setTitle($title);
 			$form->setContent(implode("\n", $content));
 			$form->setButton1($page === 1 ? "Close" : "Previous");
 			$form->setButton2($page === \count($this->pages) ? "Close" : "Next");
-			$form->setCallable(function(?bool $next) use($sender, $page) : void{
+			$form->setCallable(function($_, ?bool $next) use($sender, $page) : void{
 				if($next === null) return;
 				if($next && $page === \count($this->pages)) return;
 				if(!$next && $page === 1) return;

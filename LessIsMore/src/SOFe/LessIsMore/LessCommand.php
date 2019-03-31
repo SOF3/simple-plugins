@@ -79,7 +79,7 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 				if($next === null) return;
 				if(!$next && $page === \count($this->pages)) return;
 				if($next && $page === 1) return;
-				$nextPage = $page + ($next ? 1 : -1);
+				$nextPage = $page + ($next ? -1 : 1);
 				$this->send($sender, $nextPage);
 			});
 			$form->sendToPlayer($sender);

@@ -77,8 +77,8 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 			$form->setButton2($page === \count($this->pages) ? "Close" : "Next");
 			$form->setCallable(function($_, ?bool $next) use($sender, $page) : void{
 				if($next === null) return;
-				if($next && $page === \count($this->pages)) return;
-				if(!$next && $page === 1) return;
+				if(!$next && $page === \count($this->pages)) return;
+				if($next && $page === 1) return;
 				$nextPage = $page + ($next ? 1 : -1);
 				$this->send($sender, $nextPage);
 			});

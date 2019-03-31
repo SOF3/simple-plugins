@@ -11,6 +11,7 @@ class LessIsMore extends PluginBase{
 	public function onEnable() : void{
 		$this->saveDefaultConfig();
 		$genLpp = $this->getConfig()->get("LessIsMore", [])["lines per page"] ?? 5;
+		$preferForms = $this->getConfig()->get("LessIsMore", [])["prefer forms"] ?? true;
 
 		foreach($this->getConfig()->getAll() as $cmd => $options){
 			if($cmd === "LessIsMore"){
@@ -56,7 +57,7 @@ class LessIsMore extends PluginBase{
 				$pages[] = [$options];
 			}
 
-			$this->getServer()->getCommandMap()->register("lessismore", new LessCommand($this, $cmd, $description, $aliases, $pages));
+			$this->getServer()->getCommandMap()->register("lessismore", new LessCommand($this, $cmd, $description, $aliases, $pages, $preferForms));
 		}
 	}
 

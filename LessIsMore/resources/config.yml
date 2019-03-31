@@ -1,6 +1,8 @@
 LessIsMore:
   # number of lines per page
   lines per page: 5
+  # use forms if a player uses the commands
+  prefer forms: true
 
 # Below this line, you can freely add or remove anything to create, delete or modify commands!
 

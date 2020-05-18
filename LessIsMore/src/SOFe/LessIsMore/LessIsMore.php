@@ -75,7 +75,7 @@ class LessIsMore extends PluginBase{
 				$temp = [];
 			}
 		}
-		if(!empty($temp)){
+		if(\count($temp) !== 0){
 			$output[] = $temp;
 		}
 		return $output;

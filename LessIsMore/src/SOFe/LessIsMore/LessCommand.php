@@ -25,13 +25,17 @@ namespace SOFe\LessIsMore;
 use jojoe77777\FormAPI\ModalForm;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\permission\Permission;
-use pocketmine\Player;
+use pocketmine\permission\PermissionManager;
+use pocketmine\player\Player as Player;
 use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use pocketmine\utils\TextFormat;
 
-class LessCommand extends Command implements PluginIdentifiableCommand{
+class LessCommand extends Command implements PluginOwned{
+	use PluginOwnedTrait;
+
 	/** @var LessIsMore */
 	private $plugin;
 	/** @var string[][] */
@@ -41,11 +45,11 @@ class LessCommand extends Command implements PluginIdentifiableCommand{
 
 	public function __construct(LessIsMore $plugin, string $name, string $description, array $aliases, array $pages, bool $preferForms){
 		parent::__construct($name, $description, "/$name [1 - " . \count($pages) . "]", $aliases);
-		$parent = $plugin->getServer()->getPluginManager()->getPermission("lessismore");
+		$parent = PermissionManager::getInstance()->getPermission("lessismore");
 		\assert($parent !== null);
 		$permission = new Permission("lessismore.$name", "Permission to use /$name");
 		$parent->getChildren()[$permission->getName()] =true;
-		$plugin->getServer()->getPluginManager()->addPermission($permission);
+		PermissionManager::getInstance()->addPermission($permission);
 		$this->setPermission("lessismore.$name");
 		$this->plugin = $plugin;
 		$this->pages = $pages;

@@ -49,7 +49,7 @@ class DelayedForms extends PluginBase implements Listener{
 			$packet = $event->getPacket();
 			$event->setCancelled();
                         $sec = $this->delay / 20;
-			$player->sendPopup("A form is showing up in " . $sec . ((string) $sec)[-1] !== "1" ? "seconds" : "second"));
+			$player->sendPopup("A form is showing up in " . $sec . (((string) $sec)[-1] !== "1" ? "seconds" : "second"));
 			$this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackPluginTask($this, function() use ($player, $packet){
 				$this->except = true;
 				$player->dataPacket($packet);
